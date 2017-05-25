@@ -1,3 +1,4 @@
+#HAMMING CODE GENERATOR of any length by KAUSTAV BANERJEE [KGEC]
 print("Enter a message: ")
 message=list(raw_input())
 parity_pos=list()
