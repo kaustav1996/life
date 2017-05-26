@@ -80,15 +80,16 @@ if __name__ == '__main__':
 			q=int(connection.recv(256))
 			public, private = generate_keypair(p, q)
 			connection.sendall("Your public key is "+str(public)+" and your private key is "+str(private)+"..press enter")
-			connection.sendall("Enter a message to encrypt with your private key: ")
+			connection.sendall("Enter a message to encrypt with your public key: ")
 			message=connection.recv(256)
-			encrypted_msg = encrypt(private, message)
+			encrypted_msg = encrypt(public, message)
 			connection.sendall(''.join(map(lambda x: str(x), encrypted_msg))+"...press enter")
-			connection.sendall("Decrypting message with public key "+str(public)+"...press enter")
-			connection.sendall("your message is " +decrypt(public, encrypted_msg)+"...type exit")
+			connection.sendall("Decrypting message with private key "+str(public))
+			connection.sendall("...your message is  --> "  +decrypt(private, encrypted_msg)+" <-- type exit")
 			exit_command=""
 			while(exit_command!="exit"):
 				exit_command=connection.recv(256)
+				connection.sendall("exit acknowledged!!")
 			print("client disconnected!! closing server...")
 	finally:
         	connection.close()
