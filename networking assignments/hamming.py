@@ -33,6 +33,7 @@ for i in range(len(arr)):
         else:
             arr[i]="1"
 print("transmitted message: "+''.join(arr))
+print("Number of redundant Bit: "+str(len(arr)-len(message)))
 print("_"*25)
 print("Enter where you want to insert an error, choose a number from 1 to "+str(len(arr))+" (length of transmitted bit)")
 e=int(raw_input())
@@ -61,3 +62,8 @@ for i in range(len(arr)):
             if(arr[i]!="1"):
                 wrongpos=wrongpos+i+1
 print("Bad BIt Position : "+str(wrongpos))
+if(arr[wrongpos]=="0"):
+    arr[wrongpos]="1"
+else:
+    arr[wrongpos]="0"
+print("message without error: "+''.join(arr))
