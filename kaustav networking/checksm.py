@@ -14,18 +14,18 @@ n=len(msg)
 parts=list()
 x=n/b
 for i in range(x):
-    parts.append(msg[(i*4):(i+1)*4])
+    parts.append(msg[(i*b):(i+1)*b])
 print(parts)
-rb="0000"
+rb="0"*b
 for i in range(x):
     rb=str(bin(int(rb,2)|int(parts[i],2)))[2:]
 msg=msg+rb
 print("Transmitted message: "+msg)
 parts1=list()
 for i in range(x+1):
-    parts1.append(msg[(i*4):(i+1)*4])
+    parts1.append(msg[(i*b):(i+1)*b])
 print(parts1)
-rb="0000"
+rb="0"*b
 for i in range(x+1):
     rb=str(bin(int(rb,2)|int(parts1[i],2)))[2:]
 print("error checker output: "+cmplm(rb))
